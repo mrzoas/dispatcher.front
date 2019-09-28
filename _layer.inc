@@ -1,3 +1,4 @@
+<?php ?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -5,10 +6,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/main.css"/>
   <title><?php echo $titleForThisPage; ?></title>
   <script src="socket.js"></script>
   <script>
     var serverAddress = <?php echo "'$mainServer'"; ?>;
+    var serverAddresForSendClaim = <?php echo "'$serverAddressForSendClaim'"; ?>;
   </script>
 </head>
 <body>
@@ -27,5 +30,8 @@
     <?php echo $scriptForThisPage; ?>
   </script>
 </body>
+<script language="JavaScript" type="text/javascript" src="js/cookie.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/cookied_color_themes.js"></script>
+<script language="JavaScript" type="text/javascript" src="js/main.js"></script>
 
 </html>

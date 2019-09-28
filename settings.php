@@ -1,5 +1,6 @@
 <?php
   $mainServer = "ws://echo.websocket.org";
+  $serverAddressForSendClaim = "http://194.1.239.144:809/api/task/smart";
 
 
 
