@@ -65,24 +65,25 @@ $bodyForThisPage = <<<EOTLF123321
           </div>
           <button type="button" id="sendRequestForClaimStatusBtn" class="btn btn-primary">Проверить</button>
         </div>
+        </div>
       </form>
     </div>
   </div>
 
 
 
-<!-- FOOTER.begin -->
+  <!-- FOOTER.begin -->
 
-<footer class="bd-footer text-muted bg-light">
-<div class="container-fluid p-3 p-md-3">
-
-  <noindex><a rel="nofollow noopener" target="_blank" href="https://github.com/mrzoas/dispatcher.front"><img
-        src="img/github.svg" height="28pt"></img>GitHub</a></noindex>
-
-  <p>Разработано в рамках проведених хакатона "Цифровой прорыв" командой <strong>void*</strong>
-    <p>Казань, 27-29 сентября 2019 года</p>
-</div>
-</footer>
+  <footer class="bd-footer footer text-muted bg-light my-100">
+    <div class="bg-light container-fluid p-3 p-md-3">
+          <noindex><a rel="nofollow noopener" target="_blank"
+              href="https://github.com/mrzoas/dispatcher.front"><img src="img/github.svg" height="28pt"></img>GitHub</a></noindex>
+        
+      <p>Разработано в рамках проведених хакатона "Цифровой прорыв" командой <strong>void*</strong>
+        <p>Казань, 27-29 сентября 2019 года</p>
+    </div>
+  </footer>
+  <!-- FOOTER.end -->
 EOTLF123321;
 
 include_once("_layer.inc");
