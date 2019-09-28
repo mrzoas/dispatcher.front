@@ -35,10 +35,16 @@ connection.onclose(async () => {
 var sendBtn = document.getElementById("sendClaimToServer");
 sendBtn.addEventListener("click", function(){
   var textT = document.getElementById("claimTextarea").value;  
+  var textA = document.getElementById("inputAddress").value;  
+  var textP = document.getElementById("inputPhone").value;  
+  var textE = document.getElementById("inputEmail").value;  
   
   var dataForSanding = {
     nameClient: 'UK void*',
-    text: textT
+    text: textT,
+    address: textA,
+    phone: textP,
+    email: textE
   };
 
   var request = new XMLHttpRequest();
@@ -120,7 +126,27 @@ $bodyForThisPage = <<<EOTLF123321
     <div class="form-group">
       <label>Форма для оращения в управляющую компанию</label>
       <textarea class="form-control" id="claimTextarea" placeholder="Текст обращения" rows="10" required></textarea>
-      <input
+      
+      <div class="form-group row m-1">
+        <label for="inputAddress" class="col-sm-2 col-form-label">Адрес</label>
+        <div class="col-sm-6">
+        <input type="text" class="form-control" id="inputAddress" placeholder="Улица 12, 34">
+        </div>
+      </div>
+      
+      <div class="form-group row m-1">
+        <label for="inputPhone" class="col-sm-2 col-form-label">Номер телефон</label>
+        <div class="col-sm-6">
+        <input type="text" class="form-control" id="inputPhone" placeholder="8(912)345-67-78">
+        </div>
+      </div>
+
+      <div class="form-group row m-1">
+        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-6">
+        <input type="email" class="form-control" id="inputEmail" placeholder="name@example.ru">
+        </div>
+      </div>
     </div>
     <button type="button" class="btn btn-primary" id="sendClaimToServer">Отправить</button>
     <div class="alert alert-info mt-2 d-none" id="alertForSuccessSending" role="alert">
