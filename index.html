@@ -43,13 +43,20 @@
 
   <div class="container p-3">
     <div class="row">
-        <form class=" container-fluid">
-            <div class="form-group">
-              <label>Форма для оращения в управляющую компанию</label>
-              <textarea class="form-control" id="claimTextarea" placeholder="Текст обращения" rows="10" required></textarea>
+      <form class=" container-fluid">
+        <div class="form-group">
+          <label>Страница просмотра статуса заявления</label>
+          <label for="validationServerUsername">Код заявления</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupPrepend3">№</span>
             </div>
-            <button type="submit" class="btn btn-primary">Отправить</button>
-          </form>
+            <input type="text" id="codeOfClaim" placeholder="Номер запроса">
+            <div class="invalid-feedback">
+            </div>
+            <button type="submit" class="btn btn-primary">Проверить</button>
+          </div>
+      </form>
     </div>
   </div>
 
@@ -57,21 +64,17 @@
 
   <!-- FOOTER.begin -->
 
-  <footer class="bd-footer text-muted bg-light">
+  <footer class="bd-footer bd-fixed-buttom text-muted bg-light">
     <div class="container-fluid p-3 p-md-3">
-      
-          <noindex><a rel="nofollow noopener" target="_blank"
-              href="https://github.com/mrzoas/dispatcher.front"><img src="img/github.svg" height="28pt"></img>GitHub</a></noindex>
-        
+
+      <noindex><a rel="nofollow noopener" target="_blank" href="https://github.com/mrzoas/dispatcher.front"><img
+            src="img/github.svg" height="28pt"></img>GitHub</a></noindex>
+
       <p>Разработано в рамках проведених хакатона "Цифровой прорыв" командой <strong>void*</strong>
         <p>Казань, 27-29 сентября 2019 года</p>
     </div>
   </footer>
-
   <!-- FOOTER.end -->
-
-
-
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
