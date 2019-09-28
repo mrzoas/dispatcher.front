@@ -5,31 +5,22 @@ include_once("settings.php");
 
 $scriptForThisPage = <<<SCRIPT123321
 
-  var sendBtn = document.getElementById("sendClaimToServer");
-  sendBtn.onclick = function () {
-    text = document.getElementById("claimTextarea").value;
+  document.getElementById("sendRequestForClaimStatusBtn").onclick = function () {
+    codeOfClaim = document.getElementById("codeOfClaim").value;
     reconnectToDB(serverAddress);
 
     socket.onmessage = function(e) {
-      console.log("Ответ сервера: " + e.data);
-      // Получение ответа, если положительный, блокирем кнопку и сообщаем об этом
-      if (e.data == "ok") {
-        sendBtn.classList.add('disabled');
-        document.getElementById("alertForSuccessSending").classList.remove("d-none");
-      }
+      console.log("Ответ сервера: " + e.data); // Получение ответа
     };
     socket.onopen = function() {
-      socket.send(claimTextarea); // Отправка на сервер текста заявления
-    };
-    socket.onopen = function() {
-      socket.send(text); // Отправка на сервер кода заявления
+      socket.send(codeOfClaim); // Отправка на сервер кода заявления
     };
 
   };
     
 SCRIPT123321;
 
-$titleForThisPage = $stringClaimForm;
+$titleForThisPage = $stringClaimView;
 
 $bodyForThisPage = <<<EOTLF123321
 <header class="navbar bg-light navbar-expand flex-column flex-md-row bd-navbar">
@@ -60,19 +51,23 @@ $bodyForThisPage = <<<EOTLF123321
 
 
 <div class="container p-3">
-<div class="row">
-  <form class=" container-fluid">
-    <div class="form-group">
-      <label>Форма для оращения в управляющую компанию</label>
-      <textarea class="form-control" id="claimTextarea" placeholder="Текст обращения" rows="10" required></textarea>
+  <div class="row">
+    <form class="container-fluid">
+      <div class="form-group">
+        <label>Страница просмотра статуса заявления</label>
+        <label for="validationServerUsername">Код заявления</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">№</span>
+          </div>
+          <input type="text" id="codeOfClaim" placeholder="Номер запроса" />
+          <div class="invalid-feedback">
+          </div>
+          <button type="button" id="sendRequestForClaimStatusBtn" class="btn btn-primary">Проверить</button>
+        </div>
+      </form>
     </div>
-    <button type="button" class="btn btn-primary" id="sendClaimToServer">Отправить</button>
-    <div class="alert alert-info mt-2 d-none" id="alertForSuccessSending" role="alert">
-      Заявление успешно зарегистрированно. Отслеживать статус обращения можно по присвоенному ему коду:
-    </div>
-  </form>
-</div>
-</div>
+  </div>
 
 
 

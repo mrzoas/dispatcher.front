@@ -11,8 +11,11 @@ function reconnectToDB(serverAddress) {
 }
 
 function sendMessage(message) {
-    socket.send(message);
-    console.log("Серверу отправлено сообдение \"" + message + "\"");
+    if (notnull(socket)) {
+        socket.send(message);
+        console.log("Серверу отправлено сообдение \"" + message + "\"");
+    }
+    else console.log("Соединение с ервером ещё не произошло");
 };
 
 function connectionOpen() {
@@ -29,6 +32,7 @@ function connectionClose() {
     socket.close();
     console.log("Соединение с сервером закрыто");
 }
+
 
 function errorSocket(error) {
     console.log("Ошибка " + error.message);
