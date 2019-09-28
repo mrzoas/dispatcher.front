@@ -44,20 +44,13 @@
 
   <div class="container p-3">
     <div class="row">
-      <form class=" container-fluid">
-        <div class="form-group">
-          <label>Страница просмотра статуса заявления</label>
-          <label for="validationServerUsername">Код заявления</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroupPrepend3">№</span>
+        <form class=" container-fluid">
+            <div class="form-group">
+              <label>Форма для оращения в управляющую компанию</label>
+              <textarea class="form-control" id="claimTextarea" placeholder="Текст обращения" rows="10" required></textarea>
             </div>
-            <input type="text" id="codeOfClaim" placeholder="Номер запроса">
-            <div class="invalid-feedback">
-            </div>
-            <button type="submit" class="btn btn-primary">Проверить</button>
-          </div>
-      </form>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+          </form>
     </div>
   </div>
 
@@ -75,6 +68,9 @@
     </div>
   </footer>
   <!-- FOOTER.end -->
+
+
+
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
