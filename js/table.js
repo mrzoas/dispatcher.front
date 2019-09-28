@@ -1,4 +1,4 @@
-var json_obj = '{"table_data":[{"id":1,"type":"Нет напора воды в кране ГВС","address":"ул. Грибоедова, д. 10а","flat":"129","date":"19.09.2019","end_date":"30.09.2019"},{"id":2,"type":"Протечка кровли","address":"ул. Ленина, д. 89","flat":"5","date":"24.09.2019","end_date":"05.10.2019"},{"id":3,"type":"Неисправное освещение лифта","address":"ул. Проспект победы, стр. 15/10","flat":"","date":"29.09.2019","end_date":"04.10.2019"}]}';
+var json_obj = '{"table_data":[{"id":1,"type":"Нет напора воды в кране ГВС","address":"ул. Грибоедова, д. 10а","flat":"129","date":"19.09.2019","end_date":"30.09.2019","state":"выполнено"},{"id":2,"type":"Протечка кровли","address":"ул. Ленина, д. 89","flat":"5","date":"24.09.2019","end_date":"28.09.2019","state":"отменено"},{"id":3,"type":"Неисправное освещение лифта","address":"ул. Проспект победы, стр. 15/10","flat":"","date":"29.09.2019","end_date":"04.10.2019","state":"просрочено"}]}';
 
 var obj = JSON.parse(json_obj);
 
@@ -14,6 +14,7 @@ obj.table_data.forEach(function callback(currentItem)
  	<td class="pt-3-half text-wrap text-break" contenteditable="true">${currentItem.flat}</td>
   	<td class="pt-3-half text-wrap text-break" contenteditable="false">${currentItem.date}</td>
   	<td class="pt-3-half text-wrap text-break" contenteditable="true">${currentItem.end_date}</td>
+  	<td class="pt-3-half text-wrap text-break" contenteditable="true">${currentItem.state}</td>
   	<td>
     	<span class="table-add"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Сохранить</button></span>
     	<span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Удалить</button></span>
@@ -40,6 +41,7 @@ var dd = values[ 0 ]+'.'+values[ 1 ]+'.'+date.getFullYear();
   <td class="pt-3-half text-wrap text-break" contenteditable="true"></td>
   <td class="pt-3-half text-wrap text-break" contenteditable="true"></td>
   <td class="pt-3-half text-wrap text-break" contenteditable="false">${dd}</td>
+  <td class="pt-3-half text-wrap text-break" contenteditable="true"></td>
   <td class="pt-3-half text-wrap text-break" contenteditable="true"></td>
   <td>
     <span class="table-add"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Сохранить</button></span>
