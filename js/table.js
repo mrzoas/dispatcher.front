@@ -1,4 +1,4 @@
-var json_obj = '{"table_data":[{"id":1,"type":"Нет напора воды в кране ГВС","address":"ул. Грибоедова, д. 10а","flat":"129","date":"19.09.2019","end_date":"30.09.2019","state":"выполнено"},{"id":2,"type":"Протечка кровли","address":"ул. Ленина, д. 89","flat":"5","date":"24.09.2019","end_date":"28.09.2019","state":"отменено"},{"id":3,"type":"Неисправное освещение лифта","address":"ул. Проспект победы, стр. 15/10","flat":"","date":"29.09.2019","end_date":"04.10.2019","state":"просрочено"}]}';
+var json_obj = '{"table_data":[{"id":1,"type":"Нет напора воды в кране ГВС","address":"ул. Грибоедова, д. 10а","flat":"129","date":"19.09.2019","end_date":"30.09.2019","state":"отменено"},{"id":2,"type":"Протечка кровли","address":"ул. Ленина, д. 89","flat":"5","date":"24.09.2019","end_date":"28.09.2019","state":"просрочено"},{"id":3,"type":"Неисправное освещение лифта","address":"ул. Проспект победы, стр. 15/10","flat":"","date":"29.09.2019","end_date":"04.10.2019","state":"выполнено"}]}';
 
 var obj = JSON.parse(json_obj);
 
@@ -8,15 +8,15 @@ obj.table_data.forEach(function callback(currentItem)
 	//console.log(currentItem.id);
 	const newTr = `
 	<tr class="hide">
-  	<td class="pt-3-half text-wrap text-break" contenteditable="false">${currentItem.id}</td>
-  	<td class="pt-3-half text-wrap text-break" contenteditable="true">${currentItem.type}</td>
-  	<td class="pt-3-half text-wrap text-break" contenteditable="true">${currentItem.address}</td>
- 	<td class="pt-3-half text-wrap text-break" contenteditable="true">${currentItem.flat}</td>
-  	<td class="pt-3-half text-wrap text-break" contenteditable="false">${currentItem.date}</td>
-  	<td class="pt-3-half text-wrap text-break" contenteditable="true">${currentItem.end_date}</td>
-  	<td class="pt-3-half text-wrap text-break" contenteditable="true">${currentItem.state}</td>
+  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="false">${currentItem.id}</td>
+  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.type}</td>
+  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.address}</td>
+ 	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.flat}</td>
+  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="false">${currentItem.date}</td>
+  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.end_date}</td>
+  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.state}</td>
   	<td>
-    	<span class="table-add"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Сохранить</button></span>
+    	<span class="table-add"><button type="button" id="save" class="btn btn-danger btn-calm btn-rounded btn-sm my-0 waves-effect waves-light">Сохранить</button></span>
     	<span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Удалить</button></span>
   	</td>
 	</tr>`;
@@ -36,15 +36,15 @@ var dd = values[ 0 ]+'.'+values[ 1 ]+'.'+date.getFullYear();
 
  const newTr = `
 <tr class="hide">
-  <td class="pt-3-half text-wrap text-break" contenteditable="false">~</td>
-  <td class="pt-3-half text-wrap text-break" contenteditable="true"></td>
-  <td class="pt-3-half text-wrap text-break" contenteditable="true"></td>
-  <td class="pt-3-half text-wrap text-break" contenteditable="true"></td>
-  <td class="pt-3-half text-wrap text-break" contenteditable="false">${dd}</td>
-  <td class="pt-3-half text-wrap text-break" contenteditable="true"></td>
-  <td class="pt-3-half text-wrap text-break" contenteditable="true"></td>
+  <td class="pt-3-half text-wrap text-break active-warning" contenteditable="false">~</td>
+  <td class="pt-3-half text-wrap text-break active-warning" contenteditable="true"></td>
+  <td class="pt-3-half text-wrap text-break active-warning" contenteditable="true"></td>
+  <td class="pt-3-half text-wrap text-break active-warning" contenteditable="true"></td>
+  <td class="pt-3-half text-wrap text-break active-warning" contenteditable="false">${dd}</td>
+  <td class="pt-3-half text-wrap text-break active-warning" contenteditable="true"></td>
+  <td class="pt-3-half text-wrap text-break active-warning" contenteditable="true"></td>
   <td>
-    <span class="table-add"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Сохранить</button></span>
+    <span class="table-add"><button type="button" class="btn btn-danger btn-warning btn-rounded btn-sm my-0 waves-effect waves-light">Сохранить</button></span>
     <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Удалить</button></span>
   </td>
 </tr>`;
@@ -93,3 +93,4 @@ var dd = values[ 0 ]+'.'+values[ 1 ]+'.'+date.getFullYear();
    // Output the result
    $EXPORT.text(JSON.stringify(data));
  });
+
