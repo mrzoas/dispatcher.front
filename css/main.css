@@ -5,6 +5,7 @@
 	--main-colorful-color: #5d00ba;
 	--colorful-accent: #cccccc;
 	--main-hover-color: #ffffff;
+	--forgebackground: #ffffff;
 	--target-text-color: #000000;
 	--soft-background-color: #dcdcdc;
 }
@@ -71,9 +72,9 @@ body
 
 .btn
 {
+	color: var(--forgebackground);
 	background-color: var(--main-colorful-color);
 	border-color: var(--main-colorful-color);
-
 }
 
 .btn:hover,
@@ -112,4 +113,17 @@ textarea
     box-shadow: 0 0 5px 0;
 	color: var(--target-text-color);
 	border: none;
+}
+
+.table_background
+{
+	margin-top: 2%;
+	margin-left: 2%;
+	margin-right: 2%;
+	box-shadow: 0 0 5px 0;
+	background-color: var(--forgebackground);
+    border-radius: 5px;
+}
+.pt-3-half {
+padding-top: 1.4rem;margin-bottom: 10vh;
 }
