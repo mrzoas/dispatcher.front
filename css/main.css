@@ -2,12 +2,19 @@
 {
 	--background-color:;
 	--background-image:;
+	--main-colorful-color: #5d00ba;
+	--colorful-accent: #cccccc;
+	--main-hover-color: #ffffff;
+	--target-text-color: #000000;
+	--soft-background-color: #dcdcdc;
 }
+
 html 
 {
     position: relative;
     min-height: 100%;
 }
+
 body 
 {
 	margin-bottom: 10vh;
@@ -26,15 +33,83 @@ body
 	background-size: cover;
 }
 
-
-.header_dropdown_menu
+.dropdown-menu a:hover
 {
-
+    color: var(--main-colorful-color);
+    background-color: var(--soft-background-color);
+    box-shadow: 0 0 5px 0;
 }
-.footer
+
+.footer-dsgn
 {
+	box-shadow: 0 0 5px 0;
 	position: absolute;
     bottom: 0;
     width: 100%;
     height: 10vh;
+}
+
+.logo-dsgn
+{
+	font-family: 'Vollkorn';
+	color: var(--main-colorful-color);
+	font-weight: bold;
+	font-size: 32px;
+	margin-right: 0;
+	padding-right: 0; 
+	text-shadow: 1px 1px 1px #000;;
+}
+
+.post-logo-dsgn
+{
+	font-family: 'Pattaya';
+	color: var(--colorful-accent);
+	font-weight: bold;
+	font-size: 32px;
+	text-shadow: 1px 1px 2px #000;;
+}
+
+.btn
+{
+	background-color: var(--main-colorful-color);
+	border-color: var(--main-colorful-color);
+
+}
+
+.btn:hover,
+.btn:focus,
+.btn:visited
+{
+	background-color: var(--main-hover-color);
+	border-color: var(--main-hover-color);
+	color: var(--target-text-color);
+	box-shadow: 0 0 5px 0 var(--main-colorful-color);
+}
+
+a
+{
+	color: var(--main-colorful-color);
+}
+
+a:hover
+{
+	color: var(--target-text-color);
+}
+
+textarea
+{
+	box-shadow: 0 0 5px 0;
+	color: var(--target-text-color);
+}
+
+.navbar
+{
+	box-shadow: 0 0 5px 0;
+}
+
+.form-control:focus
+{
+    box-shadow: 0 0 5px 0;
+	color: var(--target-text-color);
+	border: none;
 }

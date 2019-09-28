@@ -4,7 +4,7 @@ function color_setup()
 {
 	if (getCookie("theme") ==  undefined)
 	{
-		document.cookie = "theme=light";
+		document.cookie = "theme=white";
 	}
 	if (getCookie("theme") == "white")
 	{
