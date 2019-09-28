@@ -5,14 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/bootstrap.css" />
-  <title><?php echo $title; ?></title>
+  <title><?php echo $titleForThisPage; ?></title>
   <script src="socket.js"></script>
   <script>
     var serverAddress = <?php echo "'$mainServer'"; ?>;
   </script>
 </head>
 <body>
-<?php echo $pageBody; ?>
+<?php echo $bodyForThisPage; ?>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -23,6 +23,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+  <script>
+    <?php echo $scriptForThisPage; ?>
+  </script>
 </body>
 
 </html>
