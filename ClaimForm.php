@@ -25,9 +25,10 @@ sendBtn.addEventListener("click", function(){
       var answerFromServer = request.responseText;
       sendBtn.classList.add('disabled');
       document.getElementById("alertForSuccessSending").classList.remove("d-none");
-      let claimId = JSON.parse(answerFromServer).data.id;
-      alert(JSON.parse(answerFromServer).data);
-      document.getElementById("alertForSuccessSending").value += answerFromServer;
+      
+      var claimId = JSON.parse(answerFromServer);
+      
+      document.getElementById("alertForSuccessSending").innerHTML += claimId.data.id;
     }
   });
 
@@ -44,29 +45,39 @@ SCRIPT123321;
 $titleForThisPage = $stringClaimForm;
 
 $bodyForThisPage = <<<EOTLF123321
-<header class="navbar bg-light navbar-expand flex-column flex-md-row bd-navbar">
-<div class="container">
-  <span class="col-7 col-sm-8 header-container">
-    <a href="lochalhost/#/" class="navbar-brand float-left" data-test-id="header-home"><span>УК void*</span></a>
-  </span>
-  <ul class="navbar-nav nav-flex-icons ml-auto">
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        Действия
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
-    </li>
+<header class="navbar bg-light navbar-expand flex-column flex-md-row bd-navbar m-0 p-0">
+    <div class="container">
+      <span class="col-7 col-sm-8 header-container m-0">
+        <a href="lochalhost/#/" class="navbar-brand float-left m-0 p-0" data-test-id="header-home">
+        <label class="row logo-dsgn m-0 p-0">
+        	САД
+        	<div class="m-0 p-0">
+        <label class="post-logo-dsgn p-1" >
+        	жкх
+        </label>
+    </div>
+        </label>
+        </a>
+      </span>
+      <ul class="navbar-nav nav-flex-icons ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Действия
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
 
-    <li class="nav-item"><a href="lochalhost/#/" class="nav-link">Вход</a></li>
-  </ul>
-</div>
-</nav>
-</header>
+        <li class="nav-item"><a href="lochalhost/#/" class="nav-link">Вход</a></li>
+      </ul>
+    </div>
+    </nav>
+  </header>
+
 
 
 
@@ -90,16 +101,16 @@ $bodyForThisPage = <<<EOTLF123321
 
 <!-- FOOTER.begin -->
 
-<footer class="bd-footer footer text-muted bg-light my-100">
-  <div class="bg-light container-fluid p-3 p-md-3">
-        <noindex><a rel="nofollow noopener" target="_blank"
-            href="https://github.com/mrzoas/dispatcher.front"><img src="img/github.svg" height="28pt"></img>GitHub</a></noindex>
-      
-    <p>Разработано в рамках проведених хакатона "Цифровой прорыв" командой <strong>void*</strong>
-      <p>Казань, 27-29 сентября 2019 года</p>
-  </div>
-</footer>
-<!-- FOOTER.end -->
+  <footer class="bd-footer footer-dsgn text-muted bg-light my-100">
+    <div class="bg-light container-fluid p-3 p-md-3">
+          <noindex><a rel="nofollow noopener" target="_blank"
+              href="https://github.com/mrzoas/dispatcher.front"><img src="img/github.svg" height="28pt"></img>GitHub</a></noindex>
+        
+      <p>Разработано в рамках проведених хакатона "Цифровой прорыв" командой <strong>void*</strong>
+        <p>Казань, 27-29 сентября 2019 года</p>
+    </div>
+  </footer>
+  <!-- FOOTER.end -->
 EOTLF123321;
 
 include_once("_layer.inc");
