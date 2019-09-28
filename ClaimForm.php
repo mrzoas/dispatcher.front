@@ -4,6 +4,34 @@ include_once("settings.php");
 
 
 $scriptForThisPage = <<<SCRIPT123321
+
+
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl(serverAddressForAnswerAfterSendClaim)
+    .configureLogging(signalR.LogLevel.Information)    
+    .build();
+connection.on("TaskCreate", (info) => {
+    //const gameGuid = info["gameGuid"];
+    //const sessionGuid = info["sessionGuid"];
+    console.log(info);
+});
+
+async function start() {
+  try {
+      await connection.start();
+      console.log("connected");
+  } catch (err) {
+      console.log(err);
+      setTimeout(() => start(), 5000);
+  }
+};
+start();
+connection.onclose(async () => {
+  await start();
+});
+
+
+
 var sendBtn = document.getElementById("sendClaimToServer");
 sendBtn.addEventListener("click", function(){
   var textT = document.getElementById("claimTextarea").value;  
@@ -15,7 +43,7 @@ sendBtn.addEventListener("click", function(){
 
   var request = new XMLHttpRequest();
   
-  request.open('POST',serverAddresForSendClaim,true);
+  request.open('POST',serverAddressForSendClaim,true);
     
   request.setRequestHeader('Accept', 'application/json');
   request.setRequestHeader('Content-Type', 'application/json');
@@ -28,17 +56,21 @@ sendBtn.addEventListener("click", function(){
       
       var claimId = JSON.parse(answerFromServer);
       
-      document.getElementById("alertForSuccessSending").innerHTML += claimId.data.id;
+      document.getElementById("alertForSuccessSending").innerHTML +=
+        "Заявление успешно зарегистрированно. Отслеживать статус обращения можно по присвоенному ему коду: <strong>" +
+        claimId.data.id +"</strong>.<br />Воспользуйтесь для этого <a href='ClaimView.php'>специальной страницей</a>.";
     }
   });
 
   request.send(JSON.stringify(dataForSanding));
 
-  reconnectToDB(serverAddress);
-  // Теперь ждем от сервера сообщеиния обработке задания
-  socket.onmessage = function(e) {
-    console.log("Ответ сервера: " + e.data);
-  };
+  // reconnectToDB(serverAddress);
+  // // Теперь ждем от сервера сообщеиния обработке задания
+  // socket.onmessage = function(e) {
+  //   console.log("Ответ сервера: " + e.data);
+  // };
+
+  
 });
 SCRIPT123321;
 
@@ -88,10 +120,10 @@ $bodyForThisPage = <<<EOTLF123321
     <div class="form-group">
       <label>Форма для оращения в управляющую компанию</label>
       <textarea class="form-control" id="claimTextarea" placeholder="Текст обращения" rows="10" required></textarea>
+      <input
     </div>
     <button type="button" class="btn btn-primary" id="sendClaimToServer">Отправить</button>
     <div class="alert alert-info mt-2 d-none" id="alertForSuccessSending" role="alert">
-      Заявление успешно зарегистрированно. Отслеживать статус обращения можно по присвоенному ему коду: 
     </div>
   </form>
 </div>
@@ -103,11 +135,8 @@ $bodyForThisPage = <<<EOTLF123321
 
   <footer class="bd-footer footer-dsgn text-muted bg-light my-100">
     <div class="bg-light container-fluid p-3 p-md-3">
-          <noindex><a rel="nofollow noopener" target="_blank"
-              href="https://github.com/mrzoas/dispatcher.front"><img src="img/github.svg" height="28pt"></img>GitHub</a></noindex>
-        
       <p>Разработано в рамках проведених хакатона "Цифровой прорыв" командой <strong>void*</strong>
-        <p>Казань, 27-29 сентября 2019 года</p>
+      <p>Казань, 27-29 сентября 2019 года</p>
     </div>
   </footer>
   <!-- FOOTER.end -->

@@ -8,10 +8,13 @@
   <link rel="stylesheet" href="css/bootstrap.css" />
   <link rel="stylesheet" href="css/main.css"/>
   <title><?php echo $titleForThisPage; ?></title>
+  
+  <script language="JavaScript" type="text/javascript" src="js/signalr.js"></script>
   <script src="socket.js"></script>
   <script>
     var serverAddress = <?php echo "'$mainServer'"; ?>;
-    var serverAddresForSendClaim = <?php echo "'$serverAddressForSendClaim'"; ?>;
+    var serverAddressForSendClaim = <?php echo "'$serverAddressForSendClaim'"; ?>;
+    var serverAddressForAnswerAfterSendClaim = <?php echo "'$serverAddressForAnswerAfterSendClaim'"; ?>;
   </script>
 </head>
 <body>
@@ -33,5 +36,7 @@
 <script language="JavaScript" type="text/javascript" src="js/cookie.js"></script>
 <script language="JavaScript" type="text/javascript" src="js/cookied_color_themes.js"></script>
 <script language="JavaScript" type="text/javascript" src="js/main.js"></script>
+
+
 
 </html>

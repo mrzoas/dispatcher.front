@@ -1,6 +1,7 @@
 <?php
-  $mainServer = "ws://echo.websocket.org";
-  $serverAddressForSendClaim = "http://194.1.239.144:809/api/task/smart";
+  $mainServer = "http://194.1.239.144:9009/taskhub";
+  $serverAddressForSendClaim = "http://194.1.239.144:9009/api/task/smart";
+  $serverAddressForAnswerAfterSendClaim = "http://194.1.239.144:9009/taskhub";
 
 
 
