@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <title>Тестовая страница</title>
+  <script src="socket.js"></script>
+  <script>
+    var serverAddress = "ws://echo.websocket.org";
+  </script>
+</head>
+
+<body>
+
+  <header class="navbar bg-light navbar-expand flex-column flex-md-row bd-navbar">
+    <div class="container">
+      <span class="col-7 col-sm-8 header-container">
+        <a href="lochalhost/#/" class="navbar-brand float-left" data-test-id="header-home"><span>УК void*</span></a>
+      </span>
+      <ul class="navbar-nav nav-flex-icons ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Действия
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+
+        <li class="nav-item"><a href="lochalhost/#/" class="nav-link">Вход</a></li>
+      </ul>
+    </div>
+    </nav>
+  </header>
+
+
+
+
+  <div class="container p-3">
+    <div class="row">
+        <form class=" container-fluid">
+            <div class="form-group">
+              <label>Форма для оращения в управляющую компанию</label>
+              <textarea class="form-control" id="claimTextarea" placeholder="Текст обращения" rows="10" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+          </form>
+    </div>
+  </div>
+
+
+
+  <!-- FOOTER.begin -->
+
+  <footer class="bd-footer text-muted bg-light">
+    <div class="container-fluid p-3 p-md-3">
+      
+          <noindex><a rel="nofollow noopener" target="_blank"
+              href="https://github.com/mrzoas/dispatcher.front"><img src="img/github.svg" height="28pt"></img>GitHub</a></noindex>
+        
+      <p>Разработано в рамках проведених хакатона "Цифровой прорыв" командой <strong>void*</strong>
+        <p>Казань, 27-29 сентября 2019 года</p>
+    </div>
+  </footer>
+
+  <!-- FOOTER.end -->
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

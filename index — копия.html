@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <title>Тестовая страница</title>
+  <script src="socket.js"></script>
+  <script>
+    var serverAddress = "ws://echo.websocket.org";
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col col-lg-2">
+        <form class="btn-group-vertical" role="group" data-toggle="buttons">
+          <button type="button" class="btn btn-secondary"
+            onclick="reconnectToDB(serverAddress)">Пересоединиться</button>
+          <button type="button" class="btn btn-secondary" onclick="connectionClose()">Отсоединиться</button>
+            <button type="button" class="btn btn-secondary" onclick="sendMessage(sendingText.value)">Отправить сообщение</button>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text" id="btnGroupAddon">></div>
+              </div>
+              <input type="text" class="form-control" name="sendingText" placeholder="Текст для отправки"
+                aria-label="Input group example" aria-describedby="btnGroupAddon">
+            </div>
+          </form>
+        </form>
+      </div>
+
+      <div class="col-md-auto">
+        Содержимое адаптивной ширины
+      </div>
+      
+      <div class="col col-lg-2">
+        3 из 3
+      </div>
+      
+    </div>
+  </div>
+
+</body>
+
+</html>
