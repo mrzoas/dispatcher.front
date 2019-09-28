@@ -5,8 +5,12 @@
 	--main-colorful-color: #5d00ba;
 	--colorful-accent: #cccccc;
 	--main-hover-color: #ffffff;
+	--forgebackground: #ffffff;
 	--target-text-color: #000000;
 	--soft-background-color: #dcdcdc;
+	--danger-color: #ff0000;
+	--calm-color: #00dc00;
+	--warning-color: #ffff00;
 }
 
 html 
@@ -71,11 +75,10 @@ body
 
 .btn
 {
+	color: var(--forgebackground);
 	background-color: var(--main-colorful-color);
 	border-color: var(--main-colorful-color);
-
 }
-
 .btn:hover,
 .btn:focus,
 .btn:visited
@@ -84,6 +87,54 @@ body
 	border-color: var(--main-hover-color);
 	color: var(--target-text-color);
 	box-shadow: 0 0 5px 0 var(--main-colorful-color);
+}
+
+.btn-danger
+{
+	color: var(--forgebackground);
+	background-color: var(--danger-color);
+	border-color: var(--danger-color);
+}
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:visited
+{
+	background-color: var(--main-hover-color);
+	border-color: var(--main-hover-color);
+	color: var(--target-text-color);
+	box-shadow: 0 0 5px 0 var(--danger-color);
+}
+
+.btn-calm
+{
+	color: var(--forgebackground);
+	background-color: var(--calm-color);
+	border-color: var(--calm-color);
+}
+.btn-calm:hover,
+.btn-calm:focus,
+.btn-calm:visited
+{
+	background-color: var(--main-hover-color);
+	border-color: var(--main-hover-color);
+	color: var(--target-text-color);
+	box-shadow: 0 0 5px 0 var(--calm-color);
+}
+
+.btn-warning
+{
+	color: var(--target-text-color);
+	background-color: var(--warning-color);
+	border-color: var(--warning-color);
+}
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:visited
+{
+	background-color: var(--main-hover-color);
+	border-color: var(--main-hover-color);
+	color: var(--target-text-color);
+	box-shadow: 0 0 5px 3px var(--warning-color);
 }
 
 a
@@ -112,4 +163,17 @@ textarea
     box-shadow: 0 0 5px 0;
 	color: var(--target-text-color);
 	border: none;
+}
+
+.table_background
+{
+	margin-top: 2%;
+	margin-left: 2%;
+	margin-right: 2%;
+	box-shadow: 0 0 5px 0;
+	background-color: var(--forgebackground);
+    border-radius: 5px;
+}
+.pt-3-half {
+padding-top: 1.4rem;margin-bottom: 10vh;
 }
