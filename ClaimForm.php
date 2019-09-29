@@ -13,7 +13,7 @@ const connection = new signalR.HubConnectionBuilder()
 connection.on("TaskCreate", (info) => {
     //const gameGuid = info["gameGuid"];
     //const sessionGuid = info["sessionGuid"];
-    console.log(info);
+    console.log(info); // Сообщение из веб сокета
 });
 
 async function start() {
@@ -60,11 +60,12 @@ sendBtn.addEventListener("click", function(){
       sendBtn.classList.add('disabled');
       document.getElementById("alertForSuccessSending").classList.remove("d-none");
       
-      var claimId = JSON.parse(answerFromServer);
-      
+      var answerParse = JSON.parse(answerFromServer);
+      console.log(answerParse); // Ответ на отправленный AJAX
+
       document.getElementById("alertForSuccessSending").innerHTML +=
         "Заявление успешно зарегистрированно. Отслеживать статус обращения можно по присвоенному ему коду: <strong>" +
-        claimId.data.id +"</strong>.<br />Воспользуйтесь для этого <a href='ClaimView.php'>специальной страницей</a>.";
+        answerParse.data +"</strong>.<br />Воспользуйтесь для этого <a href='ClaimView.php'>специальной страницей</a>.";
     }
   });
 
