@@ -10,6 +10,7 @@
   <title><?php echo $titleForThisPage; ?></title>
   
   <script language="JavaScript" type="text/javascript" src="js/signalr.js"></script>
+  <script src="validator.min.js"></script>
   <script src="socket.js"></script>
   <script>
     var serverAddress = <?php echo "'$mainServer'"; ?>;
