@@ -3,7 +3,12 @@
 include_once("settings.php");
 
 
+// Получение начальных данных для таблицы
+$xml = file_get_contents($serverAddressForGetTableWithClaims);
+
 $scriptForThisPage = <<<SCRIPT123321
+
+var json_obj2 = $xml; // Актуальные данные по заявкам  
 
 
 SCRIPT123321;
