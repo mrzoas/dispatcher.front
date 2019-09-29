@@ -10,5 +10,6 @@
   // Названия
   $stringClaimForm = "Форма заявления";
   $stringClaimView = "Просмотр заявления";
+  $stringClaimTable = "Работа с таблицей заявой";
   $stringCompanyName = "УК \"Мой дом\"";
 ?>
