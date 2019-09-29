@@ -1,28 +1,46 @@
-var json_obj = '{"table_data":[{"id":1,"type":"Нет напора воды в кране ГВС","address":"ул. Грибоедова, д. 10а","flat":"129","date":"19.09.2019","end_date":"30.09.2019","state":"отменено"},{"id":2,"type":"Протечка кровли","address":"ул. Ленина, д. 89","flat":"5","date":"24.09.2019","end_date":"28.09.2019","state":"просрочено"},{"id":3,"type":"Неисправное освещение лифта","address":"ул. Проспект победы, стр. 15/10","flat":"","date":"29.09.2019","end_date":"04.10.2019","state":"выполнено"}]}';
+var obj = json_obj;
 
-var obj = JSON.parse(json_obj);
+var tbody = document.getElementById('tbody');
 
-var tbody = document.getElementById('tbody'); 
-obj.table_data.forEach(function callback(currentItem)
+addRowsToTable(obj);
+
+
+function addRowsToTable(obj)
 {
-	//console.log(currentItem.id);
-	const newTr = `
-	<tr class="hide">
-  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="false">${currentItem.id}</td>
-  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.type}</td>
-  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.address}</td>
- 	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.flat}</td>
-  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="false">${currentItem.date}</td>
-  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.end_date}</td>
-  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.state}</td>
-  	<td>
-    	<span class="table-add"><button type="button" id="save" class="btn btn-danger btn-calm btn-rounded btn-sm my-0 waves-effect waves-light">Сохранить</button></span>
-    	<span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Удалить</button></span>
-  	</td>
-	</tr>`;
+  console.log("function addRowsToTable");
+  console.log(obj);
+  obj.tableData.forEach(function callback(currentItem)
+  {
+    //console.log(currentItem.id);
+    const newTr = `
+    <tr class="hide">
+      <td class="pt-3-half text-wrap text-break active-warning" contenteditable="false">${currentItem.code}</td>
+      <td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.text}</td>
+      <td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.address != null ? currentItem.address : "" }</td>
+    <td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.flat != null ? currentItem.flat : "" }</td>
+      <td class="pt-3-half text-wrap text-break active-warning" contenteditable="false">${currentItem.createDate != null ? currentItem.createDate : ""}</td>
+      <td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.lastEditDate != null ? currentItem.lastEditDate: ""}</td>
+      <td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.state != null ? currentItem.state : ""}</td>
+      <td>
+        <span class="table-add"><button type="button" id="save" class="btn btn-danger btn-calm btn-rounded btn-sm my-0 waves-effect waves-light">Сохранить</button></span>
+        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Удалить</button></span>
+      </td>
+    </tr>`;
 
- 	$('tbody').prepend(newTr);
-});
+    $('tbody').prepend(newTr);
+  });
+}
+/*
+code: "dvHYR34"
+createDate: null
+eMail: null
+executor: null
+id: 1
+lastEditDate: null
+phone: null
+service: null
+text: "Крышу сорвало"
+*/
 
 const $tableID = $('#table');
 const $BTN = $('#export-btn');

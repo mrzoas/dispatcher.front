@@ -6,6 +6,121 @@ include_once("settings.php");
 $scriptForThisPage = <<<SCRIPT123321
 
 
+    function uploadFile() {        
+        // var xhr = new XMLHttpRequest();                 
+        var file = document.getElementById('myfile').files[0];
+        // xhr.open("POST", "http://194.1.239.144:9009/api/task/FileUpload");
+        // xhr.setRequestHeader("filename", file.name);
+        // xhr.send(file);
+
+        console.log(file);
+
+        rawUpload("http://194.1.239.144:9009/api/task/FileUpload", file, file.name);
+        
+    }
+
+    function rawUpload(url, file, fileName) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        fileUpload(url, e.target.result, fileName)
+      };
+      reader.readAsBinaryString(file);
+    }
+
+
+    function fileUpload(url, fileData, fileName) {
+      var fileSize = fileData.length,
+        boundary = "xxxxxxxxx",
+        uri = url,
+        xhr = new XMLHttpRequest();
+      
+      xhr.open("POST", url, true);
+      xhr.setRequestHeader("Content-Type", "multipart/form-data, boundary="+boundary); // simulate a file MIME POST request.
+      xhr.setRequestHeader("Content-Length", fileSize);
+      xhr.withCredentials = "true";
+   
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+          if ((xhr.status >= 200 && xhr.status <= 200) || xhr.status == 304) {
+            
+            if (xhr.responseText != "") {
+              alert(JSON.parse(xhr.responseText).msg); // display response.
+            }
+          } else if (xhr.status == 0) {
+            alert("Could not parse response because of SOP, but the file was uploaded if you were logged in.");
+          }
+        }
+      }
+      
+      var body = "--" + boundary + "\\r\\n";
+      body += "Content-Disposition: form-data; name=\"contents\"; filename=\"" + fileName + "\"\\r\\n";
+      body += "Content-Type: application/octet-stream\\r\\n\\r\\n";
+      body += "hgfghfghfghfhghfghfghfgfileData" + "\\r\\n";
+      body += "--" + boundary + "--";
+      
+      xhr.send(body);
+      return true;
+  }
+
+
+
+
+
+
+
+function uploadFiles(inputId) {
+  console.log("File go to server");
+  
+  var input = document.getElementById(inputId);
+  var files = input.files;
+  var formData = new FormData();
+
+  for (var i = 0; i != files.length; i++) {
+    formData.append("files", files[i]);
+  }
+
+
+  var request = new XMLHttpRequest();
+  
+  request.open('POST',"http://194.1.239.144:9009/api/task/FileUpload",true);
+    
+  //request.setRequestHeader('Accept', 'multipart/form-data');
+  request.setRequestHeader('Content-Type', 'multipart/form-data');
+  //request.setRequestHeader('Content-Length', '20000000');
+  
+  request.addEventListener('readystatechange', function() {
+    if ((request.readyState==4) && (request.status==200)) {
+      var answerFromServer = request.responseText;
+      sendBtn.classList.add('disabled');
+      document.getElementById("alertForSuccessSending").classList.remove("d-none");
+      
+      var answerParse = JSON.parse(answerFromServer);
+      console.log(answerParse); // Ответ на отправленный AJAX
+
+      document.getElementById("alertForSuccessSending").innerHTML +=
+        "Заявление успешно зарегистрированно. Отслеживать статус обращения можно по присвоенному ему коду: <strong>" +
+        answerParse.data +"</strong>.<br />Воспользуйтесь для этого <a href='ClaimView.php'>специальной страницей</a>.";
+    }
+  });
+
+  request.send(formData);
+
+  // $.ajax(
+  //   {
+  //     url: "http://194.1.239.144:9009/api/task/FileUploader",
+  //     data: formData,
+  //     processData: false,
+  //     contentType: false,
+  //     type: "POST",
+  //     success: function (data) {
+  //       alert("Files Uploaded!");
+  //       console.log(data);
+  //     }
+  //   }
+  // );
+}
+
+
 const connection = new signalR.HubConnectionBuilder()
     .withUrl(serverAddressForAnswerAfterSendClaim)
     .configureLogging(signalR.LogLevel.Information)    
@@ -13,7 +128,7 @@ const connection = new signalR.HubConnectionBuilder()
 connection.on("TaskCreate", (info) => {
     //const gameGuid = info["gameGuid"];
     //const sessionGuid = info["sessionGuid"];
-    console.log(info);
+    console.log(info); // Сообщение из веб сокета
 });
 
 async function start() {
@@ -60,11 +175,12 @@ sendBtn.addEventListener("click", function(){
       sendBtn.classList.add('disabled');
       document.getElementById("alertForSuccessSending").classList.remove("d-none");
       
-      var claimId = JSON.parse(answerFromServer);
-      
+      var answerParse = JSON.parse(answerFromServer);
+      console.log(answerParse); // Ответ на отправленный AJAX
+
       document.getElementById("alertForSuccessSending").innerHTML +=
         "Заявление успешно зарегистрированно. Отслеживать статус обращения можно по присвоенному ему коду: <strong>" +
-        claimId.data.id +"</strong>.<br />Воспользуйтесь для этого <a href='ClaimView.php'>специальной страницей</a>.";
+        answerParse.data +"</strong>.<br />Воспользуйтесь для этого <a href='ClaimView.php'>специальной страницей</a>.";
     }
   });
 
@@ -116,10 +232,26 @@ $bodyForThisPage = <<<EOTLF123321
     <div class="alert alert-info mt-2 d-none" id="alertForSuccessSending" role="alert">
     </div>
   </form>
+
+
+  <form id="form" name="form" action="http://194.1.239.144:9009/api/task/FileUpload" enctype="multipart/form-data" method="post">
+  <div class="buttons">
+    <div class="upload-button">
+      <div class="label">Click me!</div>
+      <input id="files" name="files" type="file" size="1" onchange="uploadFiles('files');" />
+    </div>
+  </div>
+</form>
+
+<form>
+    <input type="file" id="myfile"/>  
+    <input type="button" onclick="uploadFile();" value="Upload" />
+</form>
+
 </div>
 </div>
 
 EOTLF123321;
-
+// onchange="uploadFiles('files');
 include_once("_layer.inc");
 ?>
