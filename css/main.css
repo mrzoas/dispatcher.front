@@ -91,6 +91,7 @@ body
 
 .btn-danger
 {
+	width: 100%;
 	color: var(--forgebackground);
 	background-color: var(--danger-color);
 	border-color: var(--danger-color);
@@ -107,6 +108,7 @@ body
 
 .btn-calm
 {
+	width: 100%;
 	color: var(--forgebackground);
 	background-color: var(--calm-color);
 	border-color: var(--calm-color);
@@ -123,6 +125,7 @@ body
 
 .btn-warning
 {
+	width: 100%;
 	color: var(--target-text-color);
 	background-color: var(--warning-color);
 	border-color: var(--warning-color);
