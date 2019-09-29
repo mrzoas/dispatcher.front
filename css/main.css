@@ -150,7 +150,10 @@ a:hover
 	color: var(--target-text-color);
 }
 
-textarea
+textarea,
+.alert,
+.card,
+.form-control
 {
 	box-shadow: 0 0 5px 0;
 	color: var(--target-text-color);

@@ -54,12 +54,14 @@ $bodyForThisPage = <<<EOTLF123321
       <div class="card bg-light">
         <div class="card-header">Просмотр статуса заявления</div>
         <div class="card-body">
-          <div class="input-group">
-            <div class="input-group-prepend">
+          <div class="input-group col">
+            <div class="input-group-prepend row">
               <span class="input-group-text">№</span>
             </div>
             <input type="text" id="codeOfClaim" placeholder="Номер запроса" />
-            <button type="button" id="sendRequestForClaimStatusBtn" class="btn btn-primary">Проверить</button>
+            <div class="row pt-1">
+              <button type="button" id="sendRequestForClaimStatusBtn" class="btn btn-primary0">Проверить</button>
+            </div>
           </div>
         </div>
       </div>
