@@ -1,27 +1,35 @@
-var obj = json_obj2;
+var obj = json_obj;
 
-var tbody = document.getElementById('tbody'); 
-obj.tableData.forEach(function callback(currentItem)
+var tbody = document.getElementById('tbody');
+
+addRowsToTable(obj);
+
+
+function addRowsToTable(obj)
 {
-	//console.log(currentItem.id);
-	const newTr = `
-	<tr class="hide">
-  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="false">${currentItem.code}</td>
-  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.text}</td>
-  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.address != null ? currentItem.address : "" }</td>
- 	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.flat != null ? currentItem.flat : "" }</td>
-  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="false">${currentItem.createDate != null ? currentItem.createDate : ""}</td>
-  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.lastEditDate != null ? currentItem.lastEditDate: ""}</td>
-  	<td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.state != null ? currentItem.state : ""}</td>
-  	<td>
-    	<span class="table-add"><button type="button" id="save" class="btn btn-danger btn-calm btn-rounded btn-sm my-0 waves-effect waves-light">Сохранить</button></span>
-    	<span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Удалить</button></span>
-  	</td>
-	</tr>`;
+  console.log("function addRowsToTable");
+  console.log(obj);
+  obj.tableData.forEach(function callback(currentItem)
+  {
+    //console.log(currentItem.id);
+    const newTr = `
+    <tr class="hide">
+      <td class="pt-3-half text-wrap text-break active-warning" contenteditable="false">${currentItem.code}</td>
+      <td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.text}</td>
+      <td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.address != null ? currentItem.address : "" }</td>
+    <td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.flat != null ? currentItem.flat : "" }</td>
+      <td class="pt-3-half text-wrap text-break active-warning" contenteditable="false">${currentItem.createDate != null ? currentItem.createDate : ""}</td>
+      <td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.lastEditDate != null ? currentItem.lastEditDate: ""}</td>
+      <td class="pt-3-half text-wrap text-break active-warning" contenteditable="true">${currentItem.state != null ? currentItem.state : ""}</td>
+      <td>
+        <span class="table-add"><button type="button" id="save" class="btn btn-danger btn-calm btn-rounded btn-sm my-0 waves-effect waves-light">Сохранить</button></span>
+        <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Удалить</button></span>
+      </td>
+    </tr>`;
 
- 	$('tbody').prepend(newTr);
-});
-
+    $('tbody').prepend(newTr);
+  });
+}
 /*
 code: "dvHYR34"
 createDate: null

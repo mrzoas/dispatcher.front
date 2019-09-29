@@ -8,7 +8,36 @@ $xml = file_get_contents($serverAddressForGetTableWithClaims);
 
 $scriptForThisPage = <<<SCRIPT123321
 
-var json_obj2 = $xml; // Актуальные данные по заявкам  
+var json_obj = $xml; // Актуальные данные по заявкам  
+
+const connection = new signalR.HubConnectionBuilder()
+    .withUrl(serverAddressForAnswerAfterSendClaim)
+    .configureLogging(signalR.LogLevel.Information)    
+    .build();
+connection.on("TaskCreate", (info) => {
+    //const gameGuid = info["gameGuid"];
+    //const sessionGuid = info["sessionGuid"];
+    console.log(info); // Сообщение из веб сокета
+    var obj = new Object();
+    obj["tableData"] = [];
+    obj["tableData"][0] = info;
+    addRowsToTable(obj);
+});
+
+async function start() {
+  try {
+      await connection.start();
+      console.log("connected");
+  } catch (err) {
+      console.log(err);
+      setTimeout(() => start(), 5000);
+  }
+};
+start();
+connection.onclose(async () => {
+  await start();
+});
+
 
 
 SCRIPT123321;
